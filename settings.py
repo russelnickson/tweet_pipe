@@ -1,6 +1,9 @@
 # Django settings for twitter_pipe project.
+import localsettings
+import os.path
+ROOT_DIR = os.path.dirname(__file__)
 
-DEBUG = True
+DEBUG = localsettings.DEBUG
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -9,10 +12,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = ''           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = ''             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
+DATABASE_ENGINE = 'postgresql_psycopg2'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = 'tweet_pipe'             # Or path to database file if using sqlite3.
+DATABASE_USER = 'localsettings.DATABASE_USER'             # Not used with sqlite3.
+DATABASE_PASSWORD = 'localsettings.DATABASE_PASSWORD'         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
@@ -54,7 +57,7 @@ SECRET_KEY = '78x6xqf8ixa-^p3ru3+=y^$5j2o_8b*fdml#u+v0g=c_-==u^i'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+    'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -65,7 +68,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'twitter_pipe.urls'
 
-TEMPLATE_DIRS = ("C:/website/twitter_pipe/templates",
+TEMPLATE_DIRS = (" os.path.join(ROOT_DIR, 'templates')",
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
