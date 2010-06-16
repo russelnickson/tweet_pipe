@@ -1,0 +1,4 @@
+{% for t in status %}
+{% if not forloop.first %},</br> {% endif %}
+{{ t.text }}
+{% endfor %}
